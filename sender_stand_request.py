@@ -14,11 +14,11 @@ def post_new_user(body):
                              headers=data.headers,
                              verify=False)
 
-## Опредение функции get_new_user_token для подстановки в заголовок ключа "Authorization" c новым токеном "Rebely"
+## Опредение функции get_new_user_token для подстановки в заголовок ключа "Authorization" c новым токеном "Bearer"
 def get_new_user_token():
     response = post_new_user(data.user_body)
     current_headers = data.headers.copy()
-    current_headers["Authorization"] = "Rebely " + response.json()["authToken"]
+    current_headers["Authorization"] = "Bearer" + response.json()["authToken"]
     return current_headers
 
 new_user_headers = get_new_user_token()
